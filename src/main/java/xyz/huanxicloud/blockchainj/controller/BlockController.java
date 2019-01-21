@@ -1,13 +1,15 @@
-package xyz.huanxicloud.blockchainj.core.controller;
+package xyz.huanxicloud.blockchainj.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xyz.huanxicloud.blockchainj.core.blockchain.BlockChain;
 import xyz.huanxicloud.blockchainj.core.common.returnmsg.ReturnMessage;
+import xyz.huanxicloud.blockchainj.data.dao.RoleMapper;
 
 import javax.annotation.Resource;
 
@@ -21,7 +23,13 @@ import javax.annotation.Resource;
 public class BlockController {
     @Resource
     private BlockChain blockChain;
-
+    @Autowired
+    RoleMapper roleMapper;
+    @GetMapping("test")
+    @ApiOperation(value = "测试api")
+    public void test() {
+        roleMapper.test();
+    }
 
     @GetMapping("last")
     @ApiOperation(value = "查看最后一个区块")

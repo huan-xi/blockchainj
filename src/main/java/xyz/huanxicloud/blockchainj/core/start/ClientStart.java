@@ -17,11 +17,12 @@ public class ClientStart {
 
     @PostConstruct
     public void initApp() {
-
+        initDB();
     }
 
     public void initDB() {
         //创建本地数据库
+
         //初始化表
     }
 

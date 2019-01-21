@@ -11,7 +11,7 @@ public class Instruction extends InstructionBase {
     /**
      * 指令的内容
      */
-    private String json;
+    private String content;
     /**
      * 时间戳
      */
@@ -29,12 +29,12 @@ public class Instruction extends InstructionBase {
      */
     private String sign;
 
-    public String getJson() {
-        return json;
+    public String getContent() {
+        return content;
     }
 
-    public void setJson(String json) {
-        this.json = json;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Long getTimeStamp() {
@@ -69,7 +69,7 @@ public class Instruction extends InstructionBase {
     @Override
     public String toString() {
         return "Instruction{" +
-                "json='" + json + '\'' +
+                "content='" + content + '\'' +
                 ", timeStamp=" + timeStamp +
                 ", input='" + inputKey + '\'' +
                 ", sign='" + sign + '\'' +

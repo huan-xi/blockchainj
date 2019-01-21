@@ -1,13 +1,14 @@
 package xyz.huanxicloud.blockchainj;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BlockchainjApplication {
+public class BlockchainApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BlockchainjApplication.class, args);
+        SpringApplication.run(BlockchainApplication.class, args);
     }
 
 }

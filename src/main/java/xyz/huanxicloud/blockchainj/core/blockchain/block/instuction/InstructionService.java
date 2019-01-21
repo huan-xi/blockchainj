@@ -20,7 +20,7 @@ public class InstructionService {
 
     public Instruction build(String json) {
         Instruction instruction = new Instruction();
-        instruction.setJson(json);
+        instruction.setContent(json);
         instruction.setInputKey(appProperty.getPublicKey());
         instruction.setTimeStamp(CommonUtils.getTimestamp());
         //用私钥签名(指令hash)让供别人验证
