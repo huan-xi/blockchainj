@@ -1,3 +1,10 @@
+spring:
+  jpa:
+    show-sql: false
+    database-platform: com.mindata.blockchain.core.sqlite.config.SQLiteDialect
+    generate-ddl: true
+sqlite:
+  dbName: data.db  #本地sqlite的名字
 app:
   publicKey: A8WLqHTjcT/FQ2IWhIePNShUEcdCzu5dG+XrQU8OMu54
   privateKey: yScdp6fNgUU+cRUTygvJG4EBhDKmOMRrK4XJ9mKVQJ8=

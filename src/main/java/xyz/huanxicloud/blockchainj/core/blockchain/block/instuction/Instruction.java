@@ -19,9 +19,13 @@ public class Instruction extends InstructionBase {
     /**
      * 操作人的公钥
      */
-    private String publicKey;
+    private String inputKey;
     /**
-     * 签名
+     * 指定人的公钥
+     */
+    private String outputKey;
+    /**
+     * 操作人签名
      */
     private String sign;
 
@@ -41,12 +45,12 @@ public class Instruction extends InstructionBase {
         this.timeStamp = timeStamp;
     }
 
-    public String getPublicKey() {
-        return publicKey;
+    public String getInputKey() {
+        return inputKey;
     }
 
-    public void setPublicKey(String publicKey) {
-        this.publicKey = publicKey;
+    public void setInputKey(String inputKey) {
+        this.inputKey = inputKey;
     }
 
     public String getSign() {
@@ -67,8 +71,9 @@ public class Instruction extends InstructionBase {
         return "Instruction{" +
                 "json='" + json + '\'' +
                 ", timeStamp=" + timeStamp +
-                ", publicKey='" + publicKey + '\'' +
+                ", input='" + inputKey + '\'' +
                 ", sign='" + sign + '\'' +
+                ", output='" + outputKey+ '\'' +
                 '}';
     }
 }

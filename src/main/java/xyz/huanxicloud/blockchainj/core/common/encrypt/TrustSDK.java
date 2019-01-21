@@ -54,7 +54,7 @@ public class TrustSDK {
 			String privateKey = ECDSAAlgorithm.generatePrivateKey();
 			String pubKey = ECDSAAlgorithm.generatePublicKey(privateKey.trim(), encodePubKey);
 			pair.setPrivateKey(privateKey);
-			pair.setPublicKey(pubKey);
+			pair.setInputKey(pubKey);
 			return pair;
 		} catch (Exception e) {
 			throw new TrustSDKException(ErrorNum.ECDSA_ENCRYPT_ERROR.getRetCode(), ErrorNum.ECDSA_ENCRYPT_ERROR.getRetMsg(), e);

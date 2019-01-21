@@ -6,11 +6,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import xyz.huanxicloud.blockchainj.core.blockchain.block.Block;
-import xyz.huanxicloud.blockchainj.core.blockchain.block.BlockBody;
 import xyz.huanxicloud.blockchainj.core.blockchain.block.instuction.InstructionService;
 import xyz.huanxicloud.blockchainj.core.blockchain.db.DbStore;
-import xyz.huanxicloud.blockchainj.core.common.AppProperty;
+import xyz.huanxicloud.blockchainj.core.common.util.FastJsonUtil;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 /**
@@ -23,39 +23,53 @@ public class BlockChain {
     @Resource
     private DbStore dbStore;
     @Resource
-    AppProperty appProperty;
-    @Resource
     InstructionService instructionService;
-    private final String LastBlockHashKey = "lasthash";
+    private final String lastBlockHashKey = "LastHash";
     private Logger logger = LoggerFactory.getLogger(getClass());
-    private String LastBlockHash;
+    private String lastBlockHash;
 
     /**
      * 创建创世块
      */
     private Block createGenesisBlock() {
         BlockService blockService = new BlockService();
-
         //构建区块体
-        BlockBody blockBody = new BlockBody();
-        blockBody.setInstructions(CollectionUtil.newArrayList(instructionService.build("创世块")));
-        return blockService.createBlock(appProperty.getPublicKey(), blockBody);
+        return blockService.createBlock(CollectionUtil.newArrayList(instructionService.build("创世块")));
     }
 
     /**
      * 本地初始化区块链
      */
+    @PostConstruct
     public void init() {
         //获取last hash 如果没有则创建创世块
-        LastBlockHash = dbStore.get(LastBlockHashKey);
-        if (StringUtils.isEmpty(LastBlockHash)) {
-            this.LastBlockHash = createGenesisBlock().getHash();
-            dbStore.put(LastBlockHashKey, this.LastBlockHash);
-        } else this.LastBlockHash = dbStore.get(LastBlockHashKey);
+        lastBlockHash = dbStore.get(lastBlockHashKey);
+        if (StringUtils.isEmpty(lastBlockHash)) addBlock(createGenesisBlock());
+        else this.lastBlockHash = dbStore.get(lastBlockHashKey);
+    }
+
+    //添加新区块
+    public void addBlock(Block block) {
+        lastBlockHash = block.getHash();
+        dbStore.put(lastBlockHashKey, lastBlockHash);
+        dbStore.put(lastBlockHash, FastJsonUtil.toJSONString(block));
     }
 
     //获取最后一个区块
-    public String getLastBlock() {
-        return dbStore.get(LastBlockHash);
+    public Block getLastBlock() {
+        return getBlockByHash(lastBlockHash);
+    }
+
+    public Block getBlockByHash(String hash) {
+        String blockJson = dbStore.get(hash);
+        return FastJsonUtil.toBean(blockJson, Block.class);
+    }
+
+    public String getLastBlockHash() {
+        return lastBlockHash;
+    }
+
+    public void setLastBlockHash(String lastBlockHash) {
+        this.lastBlockHash = lastBlockHash;
     }
 }

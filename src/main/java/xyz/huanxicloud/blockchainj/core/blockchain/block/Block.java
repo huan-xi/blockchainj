@@ -1,6 +1,9 @@
 package xyz.huanxicloud.blockchainj.core.blockchain.block;
 
+import xyz.huanxicloud.blockchainj.core.blockchain.block.instuction.Instruction;
 import xyz.huanxicloud.blockchainj.core.common.encrypt.Sha256;
+
+import java.util.List;
 
 /**
  * @author: huanxi
@@ -25,6 +28,17 @@ public class Block {
         this.blockHeader = blockHeader;
         this.blockBody = blockBody;
         this.setHash();
+    }
+
+    public Block(BlockHeader blockHeader, List<Instruction> instructions) {
+        BlockBody blockBody = new BlockBody();
+        blockBody.setInstructions(instructions);
+        this.blockHeader = blockHeader;
+        this.blockBody = blockBody;
+        this.setHash();
+    }
+
+    public Block() {
     }
 
     @Override
