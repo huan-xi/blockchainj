@@ -20,6 +20,6 @@ public class DBConfig {
     public DB levelDB() throws IOException {
         org.iq80.leveldb.Options options = new org.iq80.leveldb.Options();
         options.createIfMissing(true);
-        return Iq80DBFactory.factory.open(new File(Constants.dataPath), options);
+        return Iq80DBFactory.factory.open(new File(Constants.blockChainPath), options);
     }
 }

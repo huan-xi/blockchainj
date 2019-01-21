@@ -14,7 +14,13 @@ pbft 联盟链
 #选出主节点
 
 ##存诸层
-levelDB
+levelDB（区块 lasthash）
+角色
+公钥（id）
+权限列表
+状态
+详细信息
+ca（）
 ？ 存诸结构，存啥东西
 权限
 商品（hash,描述（json）,）
