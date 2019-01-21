@@ -32,9 +32,8 @@ import java.util.ArrayList;
 public class SwaggerConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addViewControllers( ViewControllerRegistry registry ) {
-		/*registry.addViewController( "/" ).setViewName("redirect:/swagger-ui.html");*/
-		registry.addViewController( "/" ).setViewName("redirect:/doc.html");
-
+		registry.addViewController( "/" ).setViewName("redirect:/swagger-ui.html");
+//		registry.addViewController( "/" ).setViewName("redirect:/doc.html");
 		registry.setOrder(Ordered.HIGHEST_PRECEDENCE );
 	}
 
@@ -46,7 +45,7 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
 		/**
 		 * 配置swagger映射路径
 		 */
-		registry.addResourceHandler("/test").addResourceLocations("classpath:/META-INF/resources/");
+		registry.addResourceHandler("/swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
 		registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
 	}
 

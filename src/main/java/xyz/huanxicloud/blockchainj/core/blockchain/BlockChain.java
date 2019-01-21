@@ -23,6 +23,8 @@ public class BlockChain {
     @Resource
     private DbStore dbStore;
     @Resource
+    private BlockService blockService;
+    @Resource
     InstructionService instructionService;
     private final String lastBlockHashKey = "LastHash";
     private Logger logger = LoggerFactory.getLogger(getClass());
@@ -32,7 +34,6 @@ public class BlockChain {
      * 创建创世块
      */
     private Block createGenesisBlock() {
-        BlockService blockService = new BlockService();
         //构建区块体
         return blockService.createBlock(CollectionUtil.newArrayList(instructionService.build("创世块")));
     }
@@ -45,7 +46,6 @@ public class BlockChain {
         //获取last hash 如果没有则创建创世块
         lastBlockHash = dbStore.get(lastBlockHashKey);
         if (StringUtils.isEmpty(lastBlockHash)) addBlock(createGenesisBlock());
-        else this.lastBlockHash = dbStore.get(lastBlockHashKey);
     }
 
     //添加新区块
