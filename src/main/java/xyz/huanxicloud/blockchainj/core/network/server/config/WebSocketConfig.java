@@ -1,4 +1,4 @@
-package xyz.huanxicloud.blockchainj.core.network.config;
+package xyz.huanxicloud.blockchainj.core.network.server.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
