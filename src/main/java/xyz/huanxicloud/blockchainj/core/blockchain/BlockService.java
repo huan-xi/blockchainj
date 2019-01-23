@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import xyz.huanxicloud.blockchainj.core.Constants;
 import xyz.huanxicloud.blockchainj.core.blockchain.block.*;
 import xyz.huanxicloud.blockchainj.core.blockchain.block.instuction.Instruction;
-import xyz.huanxicloud.blockchainj.core.common.AppProperty;
+import xyz.huanxicloud.blockchainj.config.AppProperty;
 import xyz.huanxicloud.blockchainj.core.common.util.CommonUtils;
 
 import javax.annotation.Resource;

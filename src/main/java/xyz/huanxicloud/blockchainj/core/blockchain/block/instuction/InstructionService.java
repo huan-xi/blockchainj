@@ -1,7 +1,7 @@
 package xyz.huanxicloud.blockchainj.core.blockchain.block.instuction;
 
 import org.springframework.stereotype.Service;
-import xyz.huanxicloud.blockchainj.core.common.AppProperty;
+import xyz.huanxicloud.blockchainj.config.AppProperty;
 import xyz.huanxicloud.blockchainj.core.common.encrypt.TrustSDK;
 import xyz.huanxicloud.blockchainj.core.common.encrypt.exception.TrustSDKException;
 import xyz.huanxicloud.blockchainj.core.common.util.CommonUtils;

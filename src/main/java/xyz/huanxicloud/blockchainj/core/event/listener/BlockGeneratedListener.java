@@ -6,7 +6,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import xyz.huanxicloud.blockchainj.core.blockchain.block.Block;
 import xyz.huanxicloud.blockchainj.core.event.AddBlockEvent;
-import xyz.huanxicloud.blockchainj.core.network.server.SocketServer;
+import xyz.huanxicloud.blockchainj.core.network.server.SocketServerManager;
 
 import javax.annotation.Resource;
 
@@ -24,8 +24,8 @@ public class BlockGeneratedListener {
      * @param addBlockEvent
      */
     @Resource
-    SocketServer server;
-    private static Log log = LogFactory.get(SocketServer.class);
+    SocketServerManager server;
+    private static Log log = LogFactory.get(SocketServerManager.class);
 
     @EventListener(AddBlockEvent.class)
 

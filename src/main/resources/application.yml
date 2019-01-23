@@ -3,6 +3,8 @@
 app:
   publicKey: A8WLqHTjcT/FQ2IWhIePNShUEcdCzu5dG+XrQU8OMu54
   privateKey: yScdp6fNgUU+cRUTygvJG4EBhDKmOMRrK4XJ9mKVQJ8=
+  nodeServer: ws://192.168.99.207:8888/connect/
+  my-ip: 192.168.99.207:8080/connect
 spring:
   datasource:
     url: jdbc:sqlite:./data/sqlite/data.db

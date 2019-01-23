@@ -20,15 +20,15 @@ import java.util.concurrent.CopyOnWriteArraySet;
  */
 @ServerEndpoint(value = "/connect")
 @Component
-public class SocketServer {
+public class SocketServerManager {
 
     private static CopyOnWriteArraySet<Session> sessions = new CopyOnWriteArraySet<Session>();
-    private static Log log = LogFactory.get(SocketServer.class);
+    private static Log log = LogFactory.get(SocketServerManager.class);
 
     @OnOpen
     public void onOpen(Session session) {
-        log.info("有节点连接");
         sessions.add(session);
+        log.info("有节点连接，当前连接节点总数：" + sessions.size());
     }
 
     @OnClose
@@ -40,7 +40,6 @@ public class SocketServer {
     @OnError
     public void error(Session session, Throwable t) {
         log.info("有节点发生错误");
-        t.printStackTrace();
     }
 
     public void broadcastBlock(Block block) {
