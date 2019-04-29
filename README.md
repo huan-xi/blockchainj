@@ -1,5 +1,5 @@
 # java实现区块链溯源系统
-> 参考项目:https://gitee.com/tianyalei/md_blockchain
+> 关系型数据库操作太过复杂，希望可以模仿Hyledger Fabric使用非关系新数据库作为状态数据库
 >
 > 使用技术：spring，springboot，websocket，springmvc，mybatis，sqlite，levelDB，
 ## 开发目的
